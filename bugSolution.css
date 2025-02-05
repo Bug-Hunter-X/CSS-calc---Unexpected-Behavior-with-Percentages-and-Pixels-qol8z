@@ -1,0 +1,23 @@
+Several workarounds might resolve this, depending on the desired behavior and layout context:
+
+**1. Using only percentages or pixels:** If possible, avoid mixing units within `calc()`.  If the 10px offset is relatively insignificant compared to the overall width, stick with a percentage-only solution. Or, if precision is critical for the 10px offset, use pixels for the entire width calculation.
+
+**2. JavaScript calculation:** For more complex scenarios, calculate the width using JavaScript and apply it dynamically:
+
+```javascript
+const div = document.getElementById('myDiv');
+const parentWidth = div.parentElement.offsetWidth;
+div.style.width = `${0.5 * parentWidth - 10}px`;
+```
+
+**3. Restructuring the layout:** Consider if the layout can be restructured to avoid the need for the calculation altogether.
+
+**4. Using viewport units (vw):** Consider using viewport width units (vw) instead of percentages.  The `vw` unit refers to 1% of the viewport's width, allowing for more precise calculations while still maintaining responsiveness. However, this might require adjustments to how the layout is designed.
+
+```css
+div {
+  width: calc(50vw - 10px);
+}
+```
+
+Choose the solution that best addresses your specific requirements.  Further browser testing is recommended to ensure consistent behavior.
